@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">HeartGuard Layout</string>
+    <string name="status_prompt">Pilih Status</string>
+    <string name="button_untuk_berkas_medis">SUBMIT</string>
+    <string name="imageview">Upload Dokumen Pendukung</string>
+    <string name="obat_obatan_yang_dikonsumsi">Obat-obatan yang Dikonsumsi</string>
+    <string name="lokasi_periksa">Lokasi Checkup Terakhir</string>
+    <string name="tanggal_periksa">Tanggal Periksa</string>
+    <string name="catatan_diagnosis">Catatan Diagnosis</string>
+    <string name="halaman_catatan_medis">Catatan Medis</string>
+
+
+    <!-- Status Array untuk Spinner -->
+    <string-array name="status_array">
+        <item>Dalam Pengobatan</item>
+        <item>Selesai Pengobatan</item>
+        <item>Kondisi Stabil</item>
+    </string-array>
+</resources>
