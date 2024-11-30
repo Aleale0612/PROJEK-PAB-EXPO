@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "783451145877",
+    "project_id": "pab-sensorsuhu",
+    "storage_bucket": "pab-sensorsuhu.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783451145877:android:688d6e8459374217907d9c",
+        "android_client_info": {
+          "package_name": "com.example.heartguardlayout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNKJGe45er0nWlwMageUgKiBJK8Do5-YA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
