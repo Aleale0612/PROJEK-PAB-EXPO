@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">HeartGuard Layout</string>
+    <string name="ap_name">RMEap</string>
     <string name="status_prompt">Pilih Status</string>
     <string name="button_untuk_berkas_medis">SUBMIT</string>
     <string name="imageview">Upload Dokumen Pendukung</string>
@@ -8,6 +9,19 @@
     <string name="tanggal_periksa">Tanggal Periksa</string>
     <string name="catatan_diagnosis">Catatan Diagnosis</string>
     <string name="halaman_catatan_medis">Catatan Medis</string>
+    <string name="login_title">Login</string>
+    <string name="register_title">Register</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="birth_date">Date of Birth</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="dont_have_account">Dont have an account? Register</string>
+    <string name="already_registered">Already have an account? Login</string>
 
 
     <!-- Status Array untuk Spinner -->
