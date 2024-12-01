@@ -97,6 +97,6 @@ class Catatan_Medis : AppCompatActivity() {
         val obat = findViewById<EditText>(R.id.editTextText6).text.toString()
 
         // Bisa kirim data ke server, atau log data yang diinputkan
-        Toast.makeText(this, "Form submitted!\nDiagnosis: $diagnosis\nTanggal: $date\nStatus: $status", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Form submittedd!\nDiagnosis: $diagnosis\nTanggal: $date\nStatus: $status", Toast.LENGTH_LONG).show()
     }
 }
