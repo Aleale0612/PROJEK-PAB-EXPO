@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1">
+
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="155dp"
+        android:layout_height="65dp"
+        android:gravity="left"
+        android:text="HELLO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.150"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Horizontal ScrollView -->
+
+    <TextView
+        android:id="@+id/namaUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="1dp"
+        android:text="SIMON"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="8dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/namaUser">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Tombol 1 -->
+            <Button
+                android:id="@+id/bmiCal"
+                android:layout_width="143dp"
+                android:layout_height="153dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_background"
+                android:text="BMI CALCULATOR"
+                android:textColor="@android:color/white" />
+
+            <!-- Tombol 2 -->
+            <Button
+                android:id="@+id/heartRate"
+                android:layout_width="143dp"
+                android:layout_height="153dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_background"
+                android:text="Heart Rate"
+                android:textColor="@android:color/white" />
+
+            <!-- Tombol 3 -->
+            <Button
+                android:id="@+id/medicalRecord"
+                android:layout_width="143dp"
+                android:layout_height="153dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_background"
+                android:text="Medical Record"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

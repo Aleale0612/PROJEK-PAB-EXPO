@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Home"
     android:background="@drawable/bg2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +39,7 @@
             android:alpha="1.0"
             android:drawableEnd="@android:drawable/ic_menu_my_calendar"
             android:hint="@string/tanggal_periksa"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView"

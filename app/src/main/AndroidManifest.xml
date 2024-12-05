@@ -13,27 +13,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HeartGuardLayout"
         tools:targetApi="31">
-
+        <activity
+            android:name=".detailOfMCU"
+            android:exported="false" />
         <!-- RegisterActivity dapat diakses oleh pengguna -->
-        <activity android:name=".RegisterActivity" android:exported="true" />
-
-        <!-- LoginActivity tidak diekspos ke luar -->
-        <activity android:name=".LoginActivity" android:exported="false" />
-
-        <!-- Catatan_Medis tidak diekspos ke luar -->
-        <activity android:name=".Catatan_Medis" android:exported="false" />
-
-        <!-- MainActivity adalah entry point aplikasi -->
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" /> <!-- LoginActivity tidak diekspos ke luar -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" /> <!-- Catatan_Medis tidak diekspos ke luar -->
+        <activity
+            android:name=".Catatan_Medis"
+            android:exported="false" /> <!-- MainActivity adalah entry point aplikasi -->
+        <activity
+            android:name=".Home"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- ProfileActivity untuk menampilkan halaman profil pengguna -->
-        <activity android:name=".ProfileActivity" android:exported="true" />
-
+        </activity> <!-- ProfileActivity untuk menampilkan halaman profil pengguna -->
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

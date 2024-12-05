@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.widget.*
 import java.util.*
 
-class Catatan_Medis : AppCompatActivity() {
+class medicalCheckUp : AppCompatActivity() {
 
      val PICK_IMAGE_REQUEST = 1
      lateinit var imageView: ImageView

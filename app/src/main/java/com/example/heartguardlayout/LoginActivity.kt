@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             // Simulasi Login
             if (username == "admin" && password == "admin") {
                 Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, Home::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Username atau password salah!", Toast.LENGTH_SHORT).show()

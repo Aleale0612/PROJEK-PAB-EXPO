@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MainActivity : AppCompatActivity() {
+class Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Menggunakan layout activity_main.xml
+        setContentView(R.layout.activity_home) // Menggunakan layout activity_main.xml
 
         // Inisialisasi tombol dari XML
         val bmiCalButton = findViewById<Button>(R.id.bmiCal)
