@@ -24,7 +24,7 @@
             android:name=".LoginActivity"
             android:exported="false" /> <!-- Catatan_Medis tidak diekspos ke luar -->
         <activity
-            android:name=".Catatan_Medis"
+            android:name=".medicalCheckUp"
             android:exported="false" /> <!-- MainActivity adalah entry point aplikasi -->
         <activity
             android:name=".Home"

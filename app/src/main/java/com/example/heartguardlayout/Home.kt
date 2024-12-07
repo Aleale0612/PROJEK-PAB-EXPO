@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 
 class Home : AppCompatActivity() {
 
@@ -12,9 +13,9 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home) // Menggunakan layout activity_main.xml
 
         // Inisialisasi tombol dari XML
-        val bmiCalButton = findViewById<Button>(R.id.bmiCal)
-        val heartRateButton = findViewById<Button>(R.id.heartRate)
-        val medicalRecordButton = findViewById<Button>(R.id.medicalRecord)
+        val bmiCalButton = findViewById<ImageButton>(R.id.bmiCal)
+        val heartRateButton = findViewById<ImageButton>(R.id.heartRate)
+        val medicalRecordButton = findViewById<ImageButton>(R.id.medicalRecord)
 
         // Fungsi klik untuk tombol "News"
         bmiCalButton.setOnClickListener {
@@ -30,11 +31,11 @@ class Home : AppCompatActivity() {
             // startActivity(intent)
         }
 
-        // Fungsi klik untuk tombol "Medical Record"
         medicalRecordButton.setOnClickListener {
             // Intent untuk pindah ke halaman Catatan Medis
-            val intent = Intent(this, Catatan_Medis::class.java)
+            val intent = Intent(this, detailOfMCU::class.java)
             startActivity(intent)
         }
+
     }
 }

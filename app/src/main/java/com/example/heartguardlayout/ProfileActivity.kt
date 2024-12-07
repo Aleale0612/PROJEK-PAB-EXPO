@@ -33,6 +33,6 @@ class ProfileActivity : AppCompatActivity() {
         tvMedicalHistory.text = "Medical History: Asthma, Allergies"
 
         // Jika menggunakan gambar profil, Anda bisa mengatur gambar di sini
-        ivProfilePicture.setImageResource(R.drawable.profile_picture)  // Gantilah dengan gambar profil yang sesuai
+        //ivProfilePicture.setImageResource(R.drawable.profile_picture)  // Gantilah dengan gambar profil yang sesuai
     }
 }

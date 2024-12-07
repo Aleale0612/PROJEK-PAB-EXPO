@@ -18,7 +18,7 @@ class medicalCheckUp : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_catatan_medis)
+        setContentView(R.layout.activity_medical_check_up)
 
         // Inisialisasi komponen sesuai ID yang ada di XML
         editTextDate = findViewById(R.id.editTextDate) // EditText untuk tanggal

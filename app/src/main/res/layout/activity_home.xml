@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg1">
 
-
+    <!-- Horizontal ScrollView -->
     <TextView
         android:id="@+id/hello"
         android:layout_width="155dp"
@@ -18,13 +18,11 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.150"
+        app:layout_constraintVertical_bias="0.100"
         tools:ignore="MissingConstraints" />
-
-    <!-- Horizontal ScrollView -->
 
     <TextView
         android:id="@+id/namaUser"
@@ -59,37 +57,52 @@
             android:orientation="horizontal">
 
             <!-- Tombol 1 -->
-            <Button
+            <ImageButton
                 android:id="@+id/bmiCal"
                 android:layout_width="143dp"
                 android:layout_height="153dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/button_background"
                 android:text="BMI CALCULATOR"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:contentDescription="Check Berat Badan Ideal"/>
 
             <!-- Tombol 2 -->
-            <Button
+            <ImageButton
                 android:id="@+id/heartRate"
                 android:layout_width="143dp"
                 android:layout_height="153dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_background"
                 android:text="Heart Rate"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:contentDescription="Check Heart Rate"/>
 
             <!-- Tombol 3 -->
-            <Button
+            <ImageButton
                 android:id="@+id/medicalRecord"
                 android:layout_width="143dp"
                 android:layout_height="153dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_background"
                 android:text="Medical Record"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:contentDescription="Data Medical Check Up"/>
 
         </LinearLayout>
     </HorizontalScrollView>
+
+    <!-- Include Detail MCU -->
+    <include
+        android:id="@+id/detail_mcu_section"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_detail_of_mcu"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
