@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg1">
 
-    <!-- Horizontal ScrollView -->
     <TextView
         android:id="@+id/hello"
         android:layout_width="155dp"
@@ -38,17 +37,31 @@
         app:layout_constraintTop_toBottomOf="@+id/hello"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/featuresTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:text="Features"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/namaUser" />
 
+    <!-- Horizontal ScrollView (Features Section) -->
     <HorizontalScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:padding="8dp"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/namaUser">
+        app:layout_constraintTop_toBottomOf="@id/featuresTitle">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -63,9 +76,7 @@
                 android:layout_height="153dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/button_background"
-                android:text="BMI CALCULATOR"
-                android:textColor="@android:color/white"
-                android:contentDescription="Check Berat Badan Ideal"/>
+                android:contentDescription="Check Berat Badan Ideal" />
 
             <!-- Tombol 2 -->
             <ImageButton
@@ -74,9 +85,7 @@
                 android:layout_height="153dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_background"
-                android:text="Heart Rate"
-                android:textColor="@android:color/white"
-                android:contentDescription="Check Heart Rate"/>
+                android:contentDescription="Check Heart Rate" />
 
             <!-- Tombol 3 -->
             <ImageButton
@@ -85,14 +94,11 @@
                 android:layout_height="153dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_background"
-                android:text="Medical Record"
-                android:textColor="@android:color/white"
-                android:contentDescription="Data Medical Check Up"/>
+                android:contentDescription="Data Medical Check Up" />
 
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- Include Detail MCU -->
     <include
         android:id="@+id/detail_mcu_section"
         android:layout_width="0dp"
@@ -101,8 +107,73 @@
         app:layout_constraintTop_toBottomOf="@id/scrollView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintBottom_toTopOf="@id/newsTitle"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
 
 
 
+    <!-- Breaking News Title -->
+    <TextView
+        android:id="@+id/newsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Breaking News"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/news"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_mcu_section" />
+
+    <!-- Horizontal ScrollView (News Section) -->
+    <HorizontalScrollView
+        android:id="@+id/news"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newsTitle">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- News Item 1 -->
+            <ImageButton
+                android:id="@+id/newsItem1"
+                android:layout_width="315dp"
+                android:layout_height="153dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_background"
+                android:contentDescription="News 1" />
+
+            <!-- News Item 2 -->
+            <ImageButton
+                android:id="@+id/newsItem2"
+                android:layout_width="315dp"
+                android:layout_height="153dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_background"
+                android:contentDescription="News 2" />
+
+            <!-- News Item 3 -->
+            <ImageButton
+                android:id="@+id/newsItem3"
+                android:layout_width="315dp"
+                android:layout_height="153dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_background"
+                android:contentDescription="News 3" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
