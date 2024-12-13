@@ -14,9 +14,11 @@
         android:theme="@style/Theme.HeartGuardLayout"
         tools:targetApi="31">
         <activity
-            android:name=".detailOfMCU"
+            android:name=".itemMCU"
             android:exported="false" />
-        <!-- RegisterActivity dapat diakses oleh pengguna -->
+        <activity
+            android:name=".detailOfMCU"
+            android:exported="false" /> <!-- RegisterActivity dapat diakses oleh pengguna -->
         <activity
             android:name=".RegisterActivity"
             android:exported="true" /> <!-- LoginActivity tidak diekspos ke luar -->

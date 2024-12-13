@@ -11,7 +11,7 @@ class detailOfMCU : AppCompatActivity() {
         setContentView(R.layout.activity_detail_of_mcu)
 
         // FloatingActionButton
-        val floatingActionButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        val floatingActionButton = findViewById<FloatingActionButton>(R.id.profile)
         floatingActionButton.setOnClickListener {
             // Intent untuk beralih ke halaman MedicalCheckUpActivity
             val intent = Intent(this, medicalCheckUp::class.java)

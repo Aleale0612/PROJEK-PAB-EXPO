@@ -13,9 +13,19 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home) // Menggunakan layout activity_main.xml
 
         // Inisialisasi tombol dari XML
+        val profileButton = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profile)
         val bmiCalButton = findViewById<ImageButton>(R.id.bmiCal)
         val heartRateButton = findViewById<ImageButton>(R.id.heartRate)
         val medicalRecordButton = findViewById<ImageButton>(R.id.medicalRecord)
+
+
+        // Fungsi klik untuk tombol "Profile"
+        profileButton.setOnClickListener {
+            // Pindah ke halaman ProfileActivity
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // Fungsi klik untuk tombol "News"
         bmiCalButton.setOnClickListener {
