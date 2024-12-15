@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.example.heartguardlayout" />
-                  <option name="mobileSdkAppId" value="1:488675716483:android:84f58f8a27d13268271ab6" />
-                  <option name="projectId" value="dbheartguard" />
-                  <option name="projectNumber" value="488675716483" />
+                  <option name="appId" value="PLACEHOLDER" />
+                  <option name="mobileSdkAppId" value="" />
+                  <option name="projectId" value="" />
+                  <option name="projectNumber" value="" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

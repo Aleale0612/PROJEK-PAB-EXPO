@@ -21,10 +21,10 @@
             android:exported="false" /> <!-- RegisterActivity dapat diakses oleh pengguna -->
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" /> <!-- LoginActivity tidak diekspos ke luar -->
+            android:exported="false" /> <!-- LoginActivity tidak diekspos ke luar -->
         <activity
             android:name=".LoginActivity"
-            android:exported="false" /> <!-- Catatan_Medis tidak diekspos ke luar -->
+            android:exported="true" /> <!-- Catatan_Medis tidak diekspos ke luar -->
         <activity
             android:name=".medicalCheckUp"
             android:exported="false" /> <!-- MainActivity adalah entry point aplikasi -->

@@ -1,5 +1,6 @@
 package com.example.heartguardlayout
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -26,27 +27,38 @@ class RegisterActivity : AppCompatActivity() {
             val email = emailEditText.text.toString().trim()
             val password = passEditText.text.toString().trim()
 
+            // Validasi input
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Email dan Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
+            // Registrasi akun dengan Firebase
             authRegis(email, password)
         }
     }
 
-    fun authRegis(email: String, pass: String) {
-        mAuth.createUserWithEmailAndPassword(email, pass)
+    // Fungsi untuk registrasi menggunakan Firebase Auth
+    private fun authRegis(email: String, password: String) {
+        mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Simpan email dan password di SharedPreferences setelah registrasi berhasil
+                    val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("email", email)
+                    editor.putString("password", password)
+                    editor.apply()
 
+                    // Tampilkan pesan sukses
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
 
-
+                    // Pindah ke LoginActivity
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
+                    // Menampilkan pesan kesalahan jika registrasi gagal
                     Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }

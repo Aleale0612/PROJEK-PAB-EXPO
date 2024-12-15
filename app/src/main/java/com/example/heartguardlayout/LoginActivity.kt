@@ -1,5 +1,6 @@
 package com.example.heartguardlayout
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
@@ -11,18 +12,18 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val etUsername = findViewById<EditText>(R.id.etUsername)
+        val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val tvRegister = findViewById<TextView>(R.id.tvRegister)
 
         btnLogin.setOnClickListener {
-            val username = etUsername.text.toString().trim()
+            val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            // Validasi Input
-            if (username.isEmpty()) {
-                etUsername.error = "Username tidak boleh kosong"
+            // Validasi input email dan password
+            if (email.isEmpty()) {
+                etEmail.error = "Email tidak boleh kosong"
                 return@setOnClickListener
             }
 
@@ -31,18 +32,25 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (!username.matches("^[a-zA-Z0-9_]+$".toRegex())) {
-                etUsername.error = "Username hanya boleh huruf dan angka"
+            // Validasi format email
+            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$".toRegex())) {
+                etEmail.error = "Email tidak valid"
                 return@setOnClickListener
             }
 
+            // Validasi panjang password
             if (password.length < 6) {
                 etPassword.error = "Password minimal 6 karakter"
                 return@setOnClickListener
             }
 
-            // Simulasi Login
-            if (username == "admin" && password == "admin") {
+            // Ambil data yang disimpan di SharedPreferences
+            val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+            val savedEmail = sharedPreferences.getString("email", null)
+            val savedPassword = sharedPreferences.getString("password", null)
+
+            // Cek apakah email dan password sesuai dengan yang disimpan
+            if (email == savedEmail && password == savedPassword) {
                 Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, Home::class.java))
                 finish()
