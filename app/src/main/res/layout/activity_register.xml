@@ -13,10 +13,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp"
+        android:layout_marginTop="32dp"
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:layout_width="335dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif-medium"
@@ -60,16 +61,7 @@
             android:background="@drawable/rounded_edittext"
             android:minHeight="48dp"/>
 
-        <EditText
-            android:id="@+id/etConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_edittext"
-            android:minHeight="48dp"/>
-
+        <!-- Birth Date -->
         <EditText
             android:id="@+id/etBirthDate"
             android:layout_width="match_parent"
@@ -77,8 +69,22 @@
             android:hint="@string/birth_date"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp"
+            android:focusable="false"
+            android:clickable="true"/>
 
+        <!-- Age (Editable by user) -->
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:minHeight="48dp"
+            android:inputType="number"/>
+
+        <!-- Phone Number -->
         <EditText
             android:id="@+id/etPhoneNumber"
             android:layout_width="match_parent"
@@ -86,8 +92,10 @@
             android:hint="@string/phone_number"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp"
+            android:inputType="phone"/>
 
+        <!-- Email Address -->
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
@@ -95,8 +103,10 @@
             android:hint="@string/email"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp"
+            android:inputType="textEmailAddress"/>
 
+        <!-- Register Button -->
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"

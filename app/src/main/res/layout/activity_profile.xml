@@ -12,17 +12,17 @@
         android:id="@+id/ivProfilePicture"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="40dp"
         android:src="@drawable/ic_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="Profile Picture"
         android:scaleType="centerCrop"
-        android:background="@drawable/circular_background" />
+        android:background="@drawable/circular_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.1" />
 
-    <!-- Nama Pengguna -->
+    <!-- Username -->
     <TextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
@@ -30,24 +30,50 @@
         android:text="Username"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/ivProfilePicture"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
-    <!-- Usia -->
+    <!-- Age -->
     <TextView
         android:id="@+id/tvAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Age: 29"
+        android:text="Age:"
         android:textSize="16sp"
-        android:layout_marginTop="8dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/tvUsername"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Birthdate -->
+    <TextView
+        android:id="@+id/tvBirthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Birthdate:"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvAge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Phone -->
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone:"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvBirthdate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <!-- Riwayat Medis -->
     <TextView
@@ -56,11 +82,11 @@
         android:layout_height="wrap_content"
         android:text="Medical History: Asthma, Allergies"
         android:textSize="14sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tvAge"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center" />
+        android:layout_marginTop="16dp" />
 
     <!-- Tombol Pengaturan -->
     <Button
@@ -68,11 +94,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/tvMedicalHistory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#ffffff"
         android:backgroundTint="@color/colorPrimary"
-        android:textColor="#ffffff" />
+        app:layout_constraintTop_toBottomOf="@id/tvMedicalHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

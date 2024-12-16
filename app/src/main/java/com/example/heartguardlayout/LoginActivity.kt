@@ -3,14 +3,24 @@ package com.example.heartguardlayout
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var mAuth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        mAuth = FirebaseAuth.getInstance()
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
@@ -32,36 +42,60 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Validasi format email
-            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$".toRegex())) {
-                etEmail.error = "Email tidak valid"
-                return@setOnClickListener
-            }
+            // Login menggunakan Firebase
+            mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Ambil userId dari Firebase Auth
+                        val userId = mAuth.currentUser?.uid
 
-            // Validasi panjang password
-            if (password.length < 6) {
-                etPassword.error = "Password minimal 6 karakter"
-                return@setOnClickListener
-            }
+                        if (userId != null) {
+                            // Ambil data dari Firestore
+                            getUserDataFromFirestore(userId)
+                        }
 
-            // Ambil data yang disimpan di SharedPreferences
-            val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-            val savedEmail = sharedPreferences.getString("email", null)
-            val savedPassword = sharedPreferences.getString("password", null)
-
-            // Cek apakah email dan password sesuai dengan yang disimpan
-            if (email == savedEmail && password == savedPassword) {
-                Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, Home::class.java))
-                finish()
-            } else {
-                Toast.makeText(this, "Username atau password salah!", Toast.LENGTH_SHORT).show()
-            }
+                        // Pindah ke halaman Home setelah login berhasil
+                        val intent = Intent(this, Home::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
-        // Pindah ke halaman Register
         tvRegister.setOnClickListener {
+            // Arahkan pengguna ke halaman register
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+    }
+
+    private fun getUserDataFromFirestore(userId: String) {
+        // Mengambil data dari Firestore berdasarkan userId
+        db.collection("users").document(userId).get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val birthdate = document.getString("birthdate")
+                    val phone = document.getString("phone")
+                    val age = document.getLong("age")
+
+                    // Menyimpan data ke SharedPreferences atau menggunakan data ini di aplikasi
+                    val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("birthdate", birthdate)
+                    editor.putString("phone", phone)
+                    editor.putInt("age", age?.toInt() ?: -1)
+                    editor.apply()
+
+                    // Menampilkan data di log untuk debugging
+                    Toast.makeText(this, "Data fetched successfully", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { e ->
+                // Menangani kesalahan jika gagal mengambil data
+                Toast.makeText(this, "Error getting data: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 }
