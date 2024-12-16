@@ -26,11 +26,13 @@ class RegisterActivity : AppCompatActivity() {
 
         // Inisialisasi EditText dan Button
         val btnRegister = findViewById<Button>(R.id.btnRegister)
-        val usernameEditText = findViewById<EditText>(R.id.etUsername) // EditText untuk username
+        val usernameEditText = findViewById<EditText>(R.id.etUsername)
         val emailEditText = findViewById<EditText>(R.id.etEmail)
         val passEditText = findViewById<EditText>(R.id.etPassword)
-        val birthDateEditText = findViewById<EditText>(R.id.etBirthDate)
+        val birthDateEditText = findViewById<EditText>(R.id.etBirthDate) // EditText untuk tanggal lahir
         val phoneEditText = findViewById<EditText>(R.id.etPhoneNumber)
+        val ageEditText = findViewById<EditText>(R.id.etAge)
+        val medicalHistoryEditText = findViewById<EditText>(R.id.etMedicalHistory)
 
         // Listener untuk membuka DatePickerDialog
         birthDateEditText.setOnClickListener {
@@ -58,12 +60,15 @@ class RegisterActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+        // Handle register button
         btnRegister.setOnClickListener {
-            val username = usernameEditText.text.toString().trim() // Ambil username
+            val username = usernameEditText.text.toString().trim()
             val email = emailEditText.text.toString().trim()
             val password = passEditText.text.toString().trim()
             val phone = phoneEditText.text.toString().trim()
             val birthdate = birthDateEditText.text.toString().trim()
+            val age = ageEditText.text.toString().trim()
+            val medicalHistory = medicalHistoryEditText.text.toString().trim().ifEmpty { "-" } // Default value if empty
 
             // Validasi input
             if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty() || birthdate.isEmpty()) {
@@ -71,12 +76,18 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Validasi format email
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Format email tidak valid", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             // Registrasi akun dengan Firebase
-            authRegis(username, email, password, phone, birthdate)
+            authRegis(username, email, password, phone, birthdate, age, medicalHistory)
         }
     }
 
-    private fun authRegis(username: String, email: String, password: String, phone: String, birthdate: String) {
+    private fun authRegis(username: String, email: String, password: String, phone: String, birthdate: String, age: String, medicalHistory: String) {
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -84,11 +95,8 @@ class RegisterActivity : AppCompatActivity() {
                     user?.let {
                         val userId = it.uid
 
-                        // Menghitung usia berdasarkan birthdate
-                        val age = calculateAge(birthdate)
-
                         // Menyimpan data pengguna ke Firestore
-                        saveUserDataToFirestore(userId, username, birthdate, phone, age)
+                        saveUserDataToFirestore(userId, username, birthdate, phone, age, medicalHistory)
 
                         // Tampilkan pesan sukses
                         Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
@@ -105,12 +113,13 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
-    private fun saveUserDataToFirestore(userId: String, username: String, birthdate: String, phone: String, age: Int) {
+    private fun saveUserDataToFirestore(userId: String, username: String, birthdate: String, phone: String, age: String, medicalHistory: String) {
         val user = hashMapOf(
-            "username" to username,   // Simpan username ke Firestore
-            "birthdate" to birthdate, // birthdate dalam bentuk string
+            "username" to username,
+            "birthdate" to birthdate,
             "phone" to phone,
-            "age" to age
+            "age" to age,  // Age tetap disimpan sebagai String
+            "medical_history" to medicalHistory // Menyimpan medical history ke Firestore
         )
 
         // Menyimpan data pengguna di Firestore dalam koleksi "users"
@@ -122,22 +131,5 @@ class RegisterActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error saving user data: ${e.message}", Toast.LENGTH_SHORT).show()
             }
-    }
-
-    // Fungsi untuk menghitung usia berdasarkan birthdate
-    private fun calculateAge(birthdate: String): Int {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val birthDate = dateFormat.parse(birthdate)
-        val calendar = Calendar.getInstance()
-        val currentDate = calendar.time
-
-        val birthCalendar = Calendar.getInstance()
-        birthCalendar.time = birthDate
-
-        var age = currentDate.year - birthCalendar.time.year
-        if (currentDate.month < birthCalendar.time.month || (currentDate.month == birthCalendar.time.month && currentDate.date < birthCalendar.time.date)) {
-            age--
-        }
-        return age
     }
 }

@@ -71,7 +71,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun getUserDataFromFirestore(userId: String) {
-        // Mengambil data dari Firestore berdasarkan userId
         db.collection("users").document(userId).get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
@@ -79,23 +78,28 @@ class LoginActivity : AppCompatActivity() {
                     val phone = document.getString("phone")
                     val age = document.getLong("age")
 
-                    // Menyimpan data ke SharedPreferences atau menggunakan data ini di aplikasi
                     val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
                     val editor = sharedPreferences.edit()
-                    editor.putString("birthdate", birthdate)
-                    editor.putString("phone", phone)
-                    editor.putInt("age", age?.toInt() ?: -1)
-                    editor.apply()
 
-                    // Menampilkan data di log untuk debugging
+                    if (birthdate != null) {
+                        editor.putString("birthdate", birthdate)
+                    }
+                    if (phone != null) {
+                        editor.putString("phone", phone)
+                    }
+                    if (age != null) {
+                        editor.putInt("age", age.toInt())
+                    }
+
+                    editor.apply()
                     Toast.makeText(this, "Data fetched successfully", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { e ->
-                // Menangani kesalahan jika gagal mengambil data
                 Toast.makeText(this, "Error getting data: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
 }

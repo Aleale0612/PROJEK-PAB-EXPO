@@ -23,13 +23,26 @@
         app:layout_constraintVertical_bias="0.100"
         tools:ignore="MissingConstraints" />
 
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Logout"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/namaUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="1dp"
-        android:text="SIMON"
+        android:text="@string/username"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,13 +51,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <!-- Profile -->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="0dp"
         android:layout_marginTop="150dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:contentDescription="Tambah Data MCU"
@@ -52,9 +66,8 @@
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
-        app:layout_constraintStart_toEndOf="@+id/hello"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.086"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
     <TextView
@@ -121,16 +134,15 @@
 
     <include
         android:id="@+id/detail_mcu_section"
+        layout="@layout/activity_detail_of_mcu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        layout="@layout/activity_detail_of_mcu"
-        app:layout_constraintTop_toBottomOf="@id/scrollView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/newsTitle"
         android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp" />
-
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@id/newsTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
 
     <!-- Breaking News Title -->

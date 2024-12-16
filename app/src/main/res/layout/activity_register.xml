@@ -22,7 +22,7 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="@string/register_title"
+            android:text="Registrasi Pengguna"
             android:textSize="26sp" />
 
         <TextView
@@ -30,14 +30,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:gravity="center"
-            android:text="Please fill in your details to create an account."
+            android:text="Mohon untuk memasukkan data dengan benar."
             android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/full_name"
+            android:hint="Nama Lengkap"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
             android:minHeight="48dp"/>
@@ -46,7 +46,7 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
+            android:hint="Nama Panggilan"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
             android:minHeight="48dp"/>
@@ -55,7 +55,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
+            android:hint="Kata Sandi"
             android:inputType="textPassword"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
@@ -66,7 +66,7 @@
             android:id="@+id/etBirthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/birth_date"
+            android:hint="Tanggal Lahir"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
             android:minHeight="48dp"
@@ -78,7 +78,7 @@
             android:id="@+id/etAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Age"
+            android:hint="Usia"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext"
             android:minHeight="48dp"
@@ -105,6 +105,24 @@
             android:background="@drawable/rounded_edittext"
             android:minHeight="48dp"
             android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/etMedicalHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan riwayat penyakit"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:minHeight="48dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jika tidak ada riwayat penyakit, tuliskan '-'"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"/>
+
 
         <!-- Register Button -->
         <Button
