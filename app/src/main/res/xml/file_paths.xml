@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Akses file di cache aplikasi -->
+    <cache-path name="cache_files" path="cache/" />
+
+    <!-- Akses file di penyimpanan internal -->
+    <files-path name="files" path="files/" />
+
+    <!-- Akses file di penyimpanan eksternal -->
+    <external-path name="external_files" path="." />
+</paths>

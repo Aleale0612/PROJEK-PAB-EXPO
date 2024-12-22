@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -20,6 +21,7 @@ class Home : AppCompatActivity() {
 
         // Inisialisasi tombol dari XML
         val profileButton = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profile)
+        val tambahDataMCUButton = findViewById<FloatingActionButton>(R.id.TambahdataMCU)
         val bmiCalButton = findViewById<ImageButton>(R.id.bmiCal)
         val heartRateButton = findViewById<ImageButton>(R.id.heartRate)
         val medicalRecordButton = findViewById<ImageButton>(R.id.medicalRecord)
@@ -56,6 +58,12 @@ class Home : AppCompatActivity() {
         profileButton.setOnClickListener {
             // Pindah ke halaman ProfileActivity
             val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        tambahDataMCUButton.setOnClickListener {
+            // Intent untuk pindah ke halaman medicalCheckUp
+            val intent = Intent(this, medicalCheckUp::class.java)
             startActivity(intent)
         }
 

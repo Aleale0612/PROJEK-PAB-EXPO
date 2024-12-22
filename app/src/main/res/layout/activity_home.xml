@@ -61,7 +61,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="50dp"
         android:clickable="true"
-        android:contentDescription="Tambah Data MCU"
+        android:contentDescription="Profile"
         app:backgroundTint="@color/design_default_color_secondary_variant"
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"

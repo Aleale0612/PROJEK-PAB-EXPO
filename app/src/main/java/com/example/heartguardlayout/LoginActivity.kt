@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                 if (document.exists()) {
                     val birthdate = document.getString("birthdate")
                     val phone = document.getString("phone")
-                    val age = document.getLong("age")
+                    val age = document.getString("age")
 
                     val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
                     val editor = sharedPreferences.edit()
