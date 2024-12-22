@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -20,6 +21,7 @@ class Home : AppCompatActivity() {
 
         // Inisialisasi tombol dari XML
         val profileButton = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profile)
+        val tambahDataMCUButton = findViewById<FloatingActionButton>(R.id.TambahdataMCU)
         val bmiCalButton = findViewById<ImageButton>(R.id.bmiCal)
         val heartRateButton = findViewById<ImageButton>(R.id.heartRate)
         val medicalRecordButton = findViewById<ImageButton>(R.id.medicalRecord)
@@ -59,6 +61,12 @@ class Home : AppCompatActivity() {
             startActivity(intent)
         }
 
+        tambahDataMCUButton.setOnClickListener {
+            // Intent untuk pindah ke halaman medicalCheckUp
+            val intent = Intent(this, medicalCheckUp::class.java)
+            startActivity(intent)
+        }
+
         // Fungsi klik untuk tombol "BMI" (Jika diperlukan, Anda bisa membuka halaman BMI)
         bmiCalButton.setOnClickListener {
             // Contoh: pindah ke halaman BMIActivity (buat kelas BMIActivity jika diperlukan)
@@ -69,8 +77,8 @@ class Home : AppCompatActivity() {
         // Fungsi klik untuk tombol "Heart Rate" (Jika diperlukan, Anda bisa membuka halaman HeartRate)
         heartRateButton.setOnClickListener {
             // Contoh: pindah ke halaman HeartRateActivity (buat kelas HeartRateActivity jika diperlukan)
-            // val intent = Intent(this, HeartRateActivity::class.java)
-            // startActivity(intent)
+            val intent = Intent(this, HeartbeatGraphView::class.java)
+            startActivity(intent)
         }
 
         // Fungsi klik untuk tombol "Medical Record"

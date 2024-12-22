@@ -40,11 +40,9 @@
             android:background="@drawable/rounded_edittext"
             android:drawableEnd="@android:drawable/ic_menu_my_calendar"
             android:hint="@string/tanggal_periksa"
-            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView"
-            tools:visibility="visible" />
+            app:layout_constraintTop_toBottomOf="@id/textView" />
 
         <!-- Lokasi Check Up -->
         <EditText
