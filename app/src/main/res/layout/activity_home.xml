@@ -185,7 +185,7 @@
                 android:layout_width="315dp"
                 android:layout_height="153dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/button_background"
+                android:background="@drawable/news01_icon"
                 android:contentDescription="News 1" />
 
             <!-- News Item 2 -->
@@ -194,7 +194,7 @@
                 android:layout_width="315dp"
                 android:layout_height="153dp"
                 android:layout_margin="8dp"
-                android:background="@drawable/button_background"
+                android:background="@drawable/news02icon"
                 android:contentDescription="News 2" />
 
             <!-- News Item 3 -->
@@ -203,7 +203,7 @@
                 android:layout_width="315dp"
                 android:layout_height="153dp"
                 android:layout_margin="8dp"
-                android:background="@drawable/button_background"
+                android:background="@drawable/newsicon03"
                 android:contentDescription="News 3" />
 
         </LinearLayout>
