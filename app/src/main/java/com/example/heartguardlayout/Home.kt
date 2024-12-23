@@ -17,15 +17,15 @@ class Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home) // Menggunakan layout activity_home.xml
+        setContentView(R.layout.activity_home)
 
         // Inisialisasi tombol dari XML
-        val profileButton = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profile)
+        val profileButton = findViewById<FloatingActionButton>(R.id.profile)
         val tambahDataMCUButton = findViewById<FloatingActionButton>(R.id.TambahdataMCU)
         val bmiCalButton = findViewById<ImageButton>(R.id.bmiCal)
         val heartRateButton = findViewById<ImageButton>(R.id.heartRate)
         val medicalRecordButton = findViewById<ImageButton>(R.id.medicalRecord)
-        val logoutButton = findViewById<Button>(R.id.logoutButton) // Tombol logout
+        val logoutButton = findViewById<Button>(R.id.logoutButton)
 
         // Inisialisasi TextView untuk menampilkan username
         val helloTextView = findViewById<TextView>(R.id.namaUser)
@@ -35,58 +35,50 @@ class Home : AppCompatActivity() {
         // Mendapatkan UID dari pengguna yang sedang login
         val userId = mAuth.currentUser?.uid
 
-        // Pastikan pengguna sudah login dan UID tersedia
         if (userId != null) {
             // Ambil data pengguna dari Firestore
             db.collection("users").document(userId).get()
                 .addOnSuccessListener { document ->
-                    if (document != null && document.exists()) {
-                        // Mengambil username dari Firestore
-                        val username = document.getString("username")
-                        // Menampilkan username pada TextView
-                        helloTextView.text = "$username"
-                    }
+                    val username = document?.getString("username") ?: "Guest"
+                    helloTextView.text = username
                 }
-                .addOnFailureListener { exception ->
-                    helloTextView.text = "Null"
+                .addOnFailureListener {
+                    helloTextView.text = "Error loading user"
                 }
         } else {
-            helloTextView.text = "Null"
+            helloTextView.text = "No user logged in"
         }
 
         // Fungsi klik untuk tombol "Profile"
         profileButton.setOnClickListener {
-            // Pindah ke halaman ProfileActivity
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
 
+        // Fungsi klik untuk tombol "Tambah Data MCU"
         tambahDataMCUButton.setOnClickListener {
-            // Intent untuk pindah ke halaman medicalCheckUp
-            val intent = Intent(this, medicalCheckUp::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, medicalCheckUp::class.java))
         }
 
-        // Fungsi klik untuk tombol "BMI" (Jika diperlukan, Anda bisa membuka halaman BMI)
+        // Fungsi klik untuk tombol "BMI Calculator"
         bmiCalButton.setOnClickListener {
-            // Contoh: pindah ke halaman BMIActivity (buat kelas BMIActivity jika diperlukan)
-             val intent = Intent(this, BMIActivity::class.java)
-             startActivity(intent)
+            startActivity(Intent(this, BMIActivity::class.java))
         }
 
-        // Fungsi klik untuk tombol "Heart Rate" (Jika diperlukan, Anda bisa membuka halaman HeartRate)
+        // Fungsi klik untuk tombol "Heart Rate"
         heartRateButton.setOnClickListener {
-            // Contoh: pindah ke halaman HeartRateActivity (buat kelas HeartRateActivity jika diperlukan)
-            val intent = Intent(this, HeartbeatGraphView::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, HeartbeatGraphView::class.java))
         }
 
         // Fungsi klik untuk tombol "Medical Record"
         medicalRecordButton.setOnClickListener {
-            // Intent untuk pindah ke halaman Catatan Medis
-            val intent = Intent(this, detailOfMCU::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, detailOfMCU::class.java))
         }
 
+        // Fungsi klik untuk tombol "Logout"
+        logoutButton.setOnClickListener {
+            mAuth.signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
 }

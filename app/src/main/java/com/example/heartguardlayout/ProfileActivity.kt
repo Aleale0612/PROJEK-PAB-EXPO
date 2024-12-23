@@ -29,10 +29,10 @@ class ProfileActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         // Inisialisasi elemen-elemen dari layout
-        editTextUsername = findViewById(R.id.Username)
-        editTextBirthdate = findViewById(R.id.Birthdate)
-        editTextPhone = findViewById(R.id.Phone)
-        editTextAge = findViewById(R.id.Age)
+        editTextUsername = findViewById(R.id.editTextUsername)
+        editTextBirthdate = findViewById(R.id.editTextBirthdate)
+        editTextPhone = findViewById(R.id.editTextPhone)
+        editTextAge = findViewById(R.id.editTextAge)
         logoutButton = findViewById(R.id.logoutButton)
         buttonSettings = findViewById(R.id.buttonSettings)
 

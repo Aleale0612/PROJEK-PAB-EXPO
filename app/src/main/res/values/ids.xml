@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="buttonSettings" type="id">button_settings</item>
-    <item name="Age" type="id">age</item>
-    <item name="Phone" type="id">phone</item>
-    <item name="Birthdate" type="id">birthdate</item>
-    <item name="Username" type="id">username</item>
+    <item name="buttonSettings" type="id"/>
+    <item name="Age" type="id"/>
+    <item name="Phone" type="id"/>
+    <item name="Birthdate" type="id"/>
+    <item name="Username" type="id"/>
 </resources>
