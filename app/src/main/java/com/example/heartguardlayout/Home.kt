@@ -70,8 +70,8 @@ class Home : AppCompatActivity() {
         // Fungsi klik untuk tombol "BMI" (Jika diperlukan, Anda bisa membuka halaman BMI)
         bmiCalButton.setOnClickListener {
             // Contoh: pindah ke halaman BMIActivity (buat kelas BMIActivity jika diperlukan)
-            // val intent = Intent(this, BMIActivity::class.java)
-            // startActivity(intent)
+             val intent = Intent(this, BMIActivity::class.java)
+             startActivity(intent)
         }
 
         // Fungsi klik untuk tombol "Heart Rate" (Jika diperlukan, Anda bisa membuka halaman HeartRate)
