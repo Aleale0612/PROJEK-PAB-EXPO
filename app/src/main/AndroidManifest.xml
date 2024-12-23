@@ -47,6 +47,10 @@
         <activity android:name=".medicalCheckUp" />
         <activity android:name=".detailOfMCU" />
         <activity android:name=".HeartbeatGraphView" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@
         android:id="@+id/hello"
         android:layout_width="155dp"
         android:layout_height="65dp"
+        android:fontFamily="@font/signika"
         android:gravity="left"
         android:text="HELLO"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -24,24 +25,13 @@
         tools:ignore="MissingConstraints" />
 
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="Logout"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/namaUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="1dp"
+        android:fontFamily="@font/signika"
         android:text="@string/username"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -57,8 +47,6 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="0dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="12dp"
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:contentDescription="Profile"
@@ -67,7 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086"
+        app:layout_constraintVertical_bias="0.6"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
     <TextView
@@ -76,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
+        android:fontFamily="@font/signika"
         android:text="Features"
         android:textColor="@android:color/black"
         android:textSize="20sp"
@@ -152,6 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/signika"
         android:text="Breaking News"
         android:textColor="@android:color/black"
         android:textSize="20sp"

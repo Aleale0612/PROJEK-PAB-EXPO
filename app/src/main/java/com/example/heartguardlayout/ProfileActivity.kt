@@ -1,7 +1,9 @@
 package com.example.heartguardlayout
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -13,10 +15,12 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
 
-    private lateinit var tvUsername: TextView
-    private lateinit var tvBirthdate: TextView
-    private lateinit var tvPhone: TextView
-    private lateinit var tvAge: TextView
+    private lateinit var editTextUsername: EditText
+    private lateinit var editTextBirthdate: EditText
+    private lateinit var editTextPhone: EditText
+    private lateinit var editTextAge: EditText
+    private lateinit var logoutButton: Button
+    private lateinit var buttonSettings: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +28,13 @@ class ProfileActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-        // Inisialisasi TextView untuk menampilkan data
-        tvUsername = findViewById(R.id.tvUsername)
-        tvBirthdate = findViewById(R.id.tvBirthdate)
-        tvPhone = findViewById(R.id.tvPhone)
-        tvAge = findViewById(R.id.tvAge)
+        // Inisialisasi elemen-elemen dari layout
+        editTextUsername = findViewById(R.id.Username)
+        editTextBirthdate = findViewById(R.id.Birthdate)
+        editTextPhone = findViewById(R.id.Phone)
+        editTextAge = findViewById(R.id.Age)
+        logoutButton = findViewById(R.id.logoutButton)
+        buttonSettings = findViewById(R.id.buttonSettings)
 
         // Ambil userId dari Firebase Auth
         val userId = mAuth.currentUser?.uid
@@ -40,7 +46,21 @@ class ProfileActivity : AppCompatActivity() {
         } else {
             // Jika pengguna belum login
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
-            finish()  // Hentikan activity jika user belum login
+            finish() // Hentikan activity jika user belum login
+        }
+
+        // Logout button listener
+        logoutButton.setOnClickListener {
+            mAuth.signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        // Settings button listener
+        buttonSettings.setOnClickListener {
+            Toast.makeText(this, "Settings clicked!", Toast.LENGTH_SHORT).show()
+            // Tambahkan logika untuk membuka halaman pengaturan jika diperlukan
         }
     }
 
@@ -49,31 +69,27 @@ class ProfileActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 try {
                     if (document.exists()) {
-                        // Ambil data birthdate, phone, dan age dari Firestore
+                        // Ambil data dari Firestore
                         val username = document.getString("username")
                         val birthdate = document.getString("birthdate")
                         val phone = document.getString("phone")
-                        val age = document.getString("age") // Tidak melakukan konversi ke Int, tetap String
+                        val age = document.getString("age")
 
-                        // Tampilkan data di TextView dengan null safety
-                        tvUsername.text = username ?: "Tidak ada data"
-                        tvBirthdate.text = birthdate ?: "Tidak ada data"
-                        tvPhone.text = phone ?: "Tidak ada data"
-                        tvAge.text = age ?: "Tidak ada data"
+                        // Tampilkan data di EditText
+                        editTextUsername.setText(username ?: "Tidak ada data")
+                        editTextBirthdate.setText(birthdate ?: "Tidak ada data")
+                        editTextPhone.setText(phone ?: "Tidak ada data")
+                        editTextAge.setText(age ?: "Tidak ada data")
 
-                        // Jika ingin memverifikasi, tampilkan di Toast
                         Toast.makeText(this, "Data berhasil diambil!", Toast.LENGTH_SHORT).show()
                     } else {
-                        // Jika data tidak ditemukan di Firestore
                         Toast.makeText(this, "Data pengguna tidak ditemukan", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: Exception) {
-                    // Menangani kesalahan umum dalam mengambil atau memproses data
                     Toast.makeText(this, "Terjadi kesalahan: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { e ->
-                // Menangani kesalahan Firestore atau masalah jaringan
                 if (e is FirebaseFirestoreException) {
                     Toast.makeText(this, "Kesalahan Firestore: ${e.message}", Toast.LENGTH_SHORT).show()
                 } else {

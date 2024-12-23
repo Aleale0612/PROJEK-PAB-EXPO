@@ -87,14 +87,6 @@ class Home : AppCompatActivity() {
             val intent = Intent(this, detailOfMCU::class.java)
             startActivity(intent)
         }
-        // Fungsi klik untuk tombol "Logout"
-        logoutButton.setOnClickListener {
-            // Melakukan logout
-            mAuth.signOut()
-            // Mengalihkan pengguna ke halaman Login
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish() // Menutup HomeActivity sehingga pengguna tidak bisa kembali ke halaman ini setelah logout
-        }
+
     }
 }
