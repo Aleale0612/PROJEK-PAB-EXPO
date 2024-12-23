@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import android.util.Log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -98,8 +99,11 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { e ->
+                // Log error message
+                Log.e("FirestoreError", "Error fetching user data: ${e.message}")
                 Toast.makeText(this, "Error getting data: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
 
 }
