@@ -1,28 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:background="#FFF3E0"
+    tools:context=".HeartbeatGraphView">
 
-    <!-- Circular Progress Indicator -->
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/bpmIndicator"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:progress="0" />
+    <!-- CardView as the parent container -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Text View to display BPM -->
-    <TextView
-        android:id="@+id/bpmTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BPM: 0"
-        android:textSize="32sp"
-        android:textColor="@android:color/holo_green_light"
-        android:layout_below="@id/bpmIndicator"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</RelativeLayout>
+            <!-- Title TextView -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Update terbaru"
+                android:textColor="#37474F"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Circular Progress with BPM -->
+
+            <!-- BPM Text in the center of the Circle -->
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/animasi"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="24dp"
+                android:progress="70"
+                app:indicatorColor="#00BCD4"
+                app:indicatorSize="200dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                app:trackColor="#FFCDD2"
+                app:trackThickness="20dp" />
+
+            <TextView
+                android:id="@+id/bpmTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="76 BPM"
+                android:textColor="#D32F2F"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/animasi"
+                app:layout_constraintEnd_toEndOf="@+id/animasi"
+                app:layout_constraintStart_toStartOf="@+id/animasi"
+                app:layout_constraintTop_toTopOf="@+id/animasi" />
+
+            <!-- Heartbeat Graph (Custom View) below the circle -->
+
+            <com.example.heartguardlayout.HeartbeatAnimation
+                android:id="@+id/heartbeatGraphView"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bpmTextView"
+                app:layout_constraintVertical_bias="0.684" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/titleTextView"
+                app:layout_constraintVertical_bias="0.486">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LIVE" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

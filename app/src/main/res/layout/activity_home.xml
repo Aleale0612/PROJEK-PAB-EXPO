@@ -115,7 +115,7 @@
                 android:layout_width="143dp"
                 android:layout_height="153dp"
                 android:layout_margin="8dp"
-                android:background="@drawable/button_background"
+                android:background="@drawable/aichat"
                 android:contentDescription="Data Medical Check Up" />
 
         </LinearLayout>
